@@ -1,9 +1,10 @@
 package main
 
 import (
-	bot "TgBotGo/bot"
-	helper "TgBotGo/bot/helpers"
 	"log"
+
+	bot "github.com/xsami/TgBotGo/bot"
+	helper "github.com/xsami/TgBotGo/bot/helpers"
 )
 
 // main function start the application.

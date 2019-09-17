@@ -1,9 +1,10 @@
 package bot
 
 import (
-	msg "TgBotGo/bot/messages"
 	"log"
 	"regexp"
+
+	msg "github.com/xsami/TgBotGo/bot/messages"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )

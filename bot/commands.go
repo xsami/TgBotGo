@@ -1,8 +1,9 @@
 package bot
 
 import (
-	command "TgBotGo/bot/commands"
 	"log"
+
+	command "github.com/xsami/TgBotGo/bot/commands"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
