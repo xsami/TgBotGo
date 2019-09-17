@@ -2,6 +2,7 @@ package bot
 
 import (
 	msg "TgBotGo/bot/messages"
+	"log"
 	"regexp"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
@@ -26,7 +27,11 @@ func messageHandler(update tgbotapi.Update, bot *tgbotapi.BotAPI) error {
 	// Take a decition about which actions will be performed.
 	// For this example I will only executed the last action found.
 	if resQLen := len(responseQ); resQLen > 0 {
-		responseQ[resQLen-1].(func(int64, *tgbotapi.BotAPI, string))(update.Message.Chat.ID, bot, message)
+		err := responseQ[resQLen-1].(func(int64, *tgbotapi.BotAPI, string) error)(update.Message.Chat.ID, bot, message)
+
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	return nil

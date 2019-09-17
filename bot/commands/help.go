@@ -5,10 +5,12 @@ import (
 )
 
 // Help display the help for the bot
-func Help(chatID int64, bot *tgbotapi.BotAPI, arguments string) {
+func Help(chatID int64, bot *tgbotapi.BotAPI, arguments string) error {
 
 	msg := tgbotapi.NewMessage(chatID, "")
 	msg.Text = "this is the help"
 
-	bot.Send(msg)
+	_, err := bot.Send(msg)
+
+	return err
 }

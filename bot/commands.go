@@ -2,6 +2,7 @@ package bot
 
 import (
 	command "TgBotGo/bot/commands"
+	"log"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
@@ -21,7 +22,11 @@ func cmdHandler(update tgbotapi.Update, bot *tgbotapi.BotAPI) error {
 			return nil
 		}
 
-		commandList[commandReq].(func(int64, *tgbotapi.BotAPI, string))(update.Message.Chat.ID, bot, commandArgs)
+		err := commandList[commandReq].(func(int64, *tgbotapi.BotAPI, string) error)(update.Message.Chat.ID, bot, commandArgs)
+
+		if err != nil {
+			log.Fatal(err)
+		}
 
 	}
 	return nil

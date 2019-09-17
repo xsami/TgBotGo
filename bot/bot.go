@@ -24,6 +24,10 @@ func StartBot(token string) error {
 
 	updates, err := bot.GetUpdatesChan(u)
 
+	if err != nil {
+		return err
+	}
+
 	for update := range updates {
 		if update.Message == nil {
 			continue
@@ -32,14 +36,14 @@ func StartBot(token string) error {
 		log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
 
 		if update.Message.IsCommand() {
-			if err := commandHandler(update, bot); err != nil { // Handle the command message
+			if err = commandHandler(update, bot); err != nil { // Handle the command message
 				return err
 			}
 			continue
 		}
 
 		// Do something else with the message received
-		if err := messageHandler(update, bot); err != nil { // Handle the single message
+		if err = messageHandler(update, bot); err != nil { // Handle the single message
 			return err
 		}
 
