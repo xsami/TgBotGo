@@ -18,7 +18,7 @@ func messageHandler(update tgbotapi.Update, bot *tgbotapi.BotAPI) error {
 
 	var responseQ []interface{} // contain the message received
 
-	// Store all the possible response that can be peformed based in the regex
+	// Store all the possible response that can be performed based in the regex
 	for keyRegex, valueRegex := range regularMsgs {
 		if ok, _ := regexp.MatchString(keyRegex, message); ok {
 			responseQ = append(responseQ, valueRegex)

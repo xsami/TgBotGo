@@ -8,7 +8,7 @@ import (
 )
 
 // main function start the application.
-// First load the file .env with the enviroment variables
+// First load the file .env with the environment variables
 // and ask for the token to call the main bot initializer
 func main() {
 

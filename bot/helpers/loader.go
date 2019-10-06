@@ -21,7 +21,7 @@ func LoadEnv(path ...string) error {
 }
 
 // Getenv return a string with the value
-// of the given enviroment key
+// of the given environment key
 func Getenv(key string) string {
 	return os.Getenv(key)
 }
